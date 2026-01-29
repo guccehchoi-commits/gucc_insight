@@ -17,6 +17,6 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Categories", name: "categories", widget: "list", default: ["insight"] }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Thumbnail Image", name: "image", widget: "image", required: false } # 이미지 업로드 칸 추가
+      - { label: "Description", name: "description", widget: "string" } # 요약 글 추가
       - { label: "Body", name: "body", widget: "markdown" }
