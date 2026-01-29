@@ -15,7 +15,10 @@ collections:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "부제(요약)", name: "excerpt", widget: "string", required: false }
       - { label: "작성일", name: "date", widget: "datetime" }
-      - { label: "대표 이미지(썸네일)", name: "header", widget: "object", fields: [
-          { label: "이미지 선택", name: "teaser", widget: "image" }
-        ]}
+      # 핵심 수정: name을 'header' 대신 'header_image'로, 그 안의 이미지를 'teaser'로 고정
+      - label: "대표 이미지(썸네일)"
+        name: "header"
+        widget: "object"
+        fields:
+          - { label: "이미지 업로드", name: "teaser", widget: "image" }
       - { label: "본문 내용", name: "body", widget: "markdown" }
