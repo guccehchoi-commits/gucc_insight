@@ -2,21 +2,20 @@ backend:
   name: git-gateway
   branch: master
 
-site_url: https://soft-swan-729016.netlify.app
-display_url: https://soft-swan-729016.netlify.app
-
-media_folder: "assets/images/uploads"
-public_folder: "/assets/images/uploads"
+media_folder: "assets/images" # 이미지가 저장될 경로
+public_folder: "/assets/images"
 
 collections:
   - name: "posts"
-    label: "Posts"
+    label: "포스트 등록"
     folder: "_posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Thumbnail Image", name: "image", widget: "image", required: false } # 이미지 업로드 칸 추가
-      - { label: "Description", name: "description", widget: "string" } # 요약 글 추가
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "제목", name: "title", widget: "string" }
+      - { label: "부제(요약)", name: "excerpt", widget: "string", required: false }
+      - { label: "작성일", name: "date", widget: "datetime" }
+      - { label: "대표 이미지(썸네일)", name: "header", widget: "object", fields: [
+          { label: "이미지 선택", name: "teaser", widget: "image" }
+        ]}
+      - { label: "본문 내용", name: "body", widget: "markdown" }
