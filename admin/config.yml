@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: guccehchoi-commits/gucc_insight
   branch: master
 
 site_url: https://soft-swan-729016.netlify.app
