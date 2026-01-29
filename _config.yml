@@ -16,11 +16,9 @@ defaults:
     values:
       layout: single
       author_profile: true
-      entries_layout: grid  # 이 부분이 카드형으로 만들어주는 핵심입니다
-      classes: wide         # 화면을 더 넓게 씁니다
-      read_time: true
-      share: true
-      related: true
+      entries_layout: grid
+      classes: wide
+      # teaser: ... 이 줄은 삭제하거나 지워주세요!
 
 category_archive:
   type: grid
