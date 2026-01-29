@@ -2,6 +2,9 @@ backend:
   name: git-gateway
   branch: master
 
+site_url: https://soft-swan-729016.netlify.app
+display_url: https://soft-swan-729016.netlify.app
+
 media_folder: "assets/images/uploads"
 public_folder: "/assets/images/uploads"
 
