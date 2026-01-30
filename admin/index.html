@@ -2,43 +2,40 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GUCC Admin Panel</title>
+  <title>GUCC CMS</title>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-    // 자동 로딩을 방지하기 위해 window 객체에 설정을 미리 주입합니다.
-    window.CMS_CONFIGURATION = {
-      backend: {
-        name: "github",
-        repo: "guccehchoi-commits/gucc_insight",
-        branch: "master",
-        base_url: "https://gucc-auth.gucc-ehchoi.workers.dev",
-        auth_endpoint: "auth"
-      },
-      display_url: "https://gucc-insight.pages.dev",
-      media_folder: "assets/images",
-      public_folder: "/assets/images",
-      collections: [
-        {
-          name: "posts",
-          label: "포스트 등록",
-          folder: "_posts",
-          create: true,
-          slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
-          fields: [
-            { label: "제목", name: "title", widget: "string" },
-            { label: "부제(요약)", name: "excerpt", widget: "string", required: false },
-            { label: "작성일", name: "date", widget: "datetime" },
-            { label: "본문 내용", name: "body", widget: "markdown" }
-          ]
-        }
-      ]
-    };
+    // CMS가 자동으로 config.yml을 찾으러 가는 길을 완전히 차단합니다.
+    window.CMS_MANUAL_INIT = true; 
 
-    // 설정 중복 로드를 방지하며 초기화합니다.
-    CMS.init({ config: window.CMS_CONFIGURATION });
+    CMS.init({
+      config: {
+        backend: {
+          name: "github",
+          repo: "guccehchoi-commits/gucc_insight",
+          branch: "master",
+          base_url: "https://gucc-auth.gucc-ehchoi.workers.dev",
+          auth_endpoint: "auth"
+        },
+        load_config_file: false, // 파일 로딩 절대 금지
+        media_folder: "assets/images",
+        public_folder: "/assets/images",
+        collections: [
+          {
+            name: "posts_new", // 이름을 아예 다르게 바꿔서 중복 에러를 물리적으로 회피합니다.
+            label: "포스트 등록",
+            folder: "_posts",
+            create: true,
+            fields: [
+              { label: "제목", name: "title", widget: "string" },
+              { label: "본문", name: "body", widget: "markdown" }
+            ]
+          }
+        ]
+      }
+    });
   </script>
 </body>
 </html>
