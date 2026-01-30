@@ -2,39 +2,42 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GUCC Insight CMS</title>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-    CMS.init({
-      config: {
-        backend: {
-          name: "github",
-          repo: "guccehchoi-commits/gucc_insight",
-          branch: "master",
-          base_url: "https://gucc-auth.gucc-ehchoi.workers.dev",
-          auth_endpoint: "auth"
-        },
-        media_folder: "assets/images",
-        public_folder: "/assets/images",
-        collections: [
-          {
-            name: "posts",
-            label: "포스트 등록",
-            folder: "_posts",
-            create: true,
-            slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
-            fields: [
-              { label: "제목", name: "title", widget: "string" },
-              { label: "부제", name: "excerpt", widget: "string", required: false },
-              { label: "작성일", name: "date", widget: "datetime" },
-              { label: "본문", name: "body", widget: "markdown" }
-            ]
-          }
-        ]
-      }
-    });
+    const config = {
+      backend: {
+        name: "github",
+        repo: "guccehchoi-commits/gucc_insight",
+        branch: "master",
+        base_url: "https://gucc-auth.gucc-ehchoi.workers.dev",
+        auth_endpoint: "auth"
+      },
+      media_folder: "assets/images",
+      public_folder: "/assets/images",
+      collections: [
+        {
+          name: "posts",
+          label: "포스트 등록",
+          folder: "_posts",
+          create: true,
+          slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+          fields: [
+            { label: "제목", name: "title", widget: "string" },
+            { label: "부제", name: "excerpt", widget: "string", required: false },
+            { label: "작성일", name: "date", widget: "datetime" },
+            { label: "본문 내용", name: "body", widget: "markdown" }
+          ]
+        }
+      ]
+    };
+    
+    // CMS 초기화 시점 강제 지정
+    window.CMS_CONFIGURATION = config;
+    CMS.init({ config });
   </script>
 </body>
 </html>
