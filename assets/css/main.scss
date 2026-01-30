@@ -1,0 +1,11 @@
+---
+# Jekyll에게 이 파일이 SCSS임을 알려주는 설정입니다.
+---
+
+@charset "utf-8";
+
+// 1. 테마의 기본 스타일을 불러옵니다.
+@import "minimal-mistakes";
+
+// 2. (선택) 여기에 본인이 바꾸고 싶은 디자인 코드를 추가할 수 있습니다.
+// 예: body { font-family: 'Nanum Gothic', sans-serif; }
