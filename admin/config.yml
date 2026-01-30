@@ -2,7 +2,7 @@ backend:
   name: github
   repo: guccehchoi-commits/gucc_insight
   branch: master
-  base_url: https://gucc-auth.gucc-ehchoi.workers.dev
+  base_url: https://gucc-auth.gucc-ehchoi.workers.dev/
   auth_endpoint: auth
 
 media_folder: "assets/images"
