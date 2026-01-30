@@ -1,11 +1,11 @@
 backend:
-  name: github  # 넷리피를 떠났으므로 github로 꼭 바꿔야
+  name: github
   repo: guccehchoi-commits/gucc_insight
-  branch: master # 메인브랜치명인 master로 수정
+  branch: master
   base_url: https://gucc-auth.gucc-ehchoi.workers.dev
   auth_endpoint: auth
 
-media_folder: "assets/images" # 이미지가 저장될 경로
+media_folder: "assets/images"
 public_folder: "/assets/images"
 
 collections:
@@ -18,7 +18,6 @@ collections:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "부제(요약)", name: "excerpt", widget: "string", required: false }
       - { label: "작성일", name: "date", widget: "datetime" }
-      # 핵심 수정: name을 'header' 대신 'header_image'로, 그 안의 이미지를 'teaser'로 고정
       - label: "대표 이미지(썸네일)"
         name: "header"
         widget: "object"
