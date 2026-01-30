@@ -3,10 +3,43 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
+  <title>GUCC Admin</title>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script src="./cms.js"></script>
+
+  <script>
+    // 2. 엔진이 완전히 로드된 후 설정을 주입합니다
+    CMS.init({
+      config: {
+        backend: {
+          name: "github",
+          repo: "guccehchoi-commits/gucc_insight",
+          branch: "master",
+          // 아까 원복하신 Worker 주소입니다
+          base_url: "https://gucc-auth.gucc-ehchoi.workers.dev",
+          auth_endpoint: "auth"
+        },
+        display_url: "https://gucc-insight.pages.dev",
+        media_folder: "assets/images",
+        public_folder: "/assets/images",
+        collections: [
+          {
+            name: "posts",
+            label: "포스트 등록",
+            folder: "_posts",
+            create: true,
+            slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+            fields: [
+              { label: "제목", name: "title", widget: "string" },
+              { label: "부제(요약)", name: "excerpt", widget: "string", required: false },
+              { label: "작성일", name: "date", widget: "datetime" },
+              { label: "본문 내용", name: "body", widget: "markdown" }
+            ]
+          }
+        ]
+      }
+    });
+  </script>
 </body>
 </html>
