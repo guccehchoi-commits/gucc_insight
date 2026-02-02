@@ -15,8 +15,9 @@
           name: "github",
           repo: "guccehchoi-commits/gucc_insight",
           branch: "master",
-          base_url: "https://cms-proxy.vercel.app", // Vercel 전용 인증 대행 주소
-          auth_endpoint: "auth"
+          // 'Cannot GET /auth'를 해결하는 마법의 두 줄입니다.
+          base_url: "https://gucc-insight.vercel.app", 
+          auth_endpoint: "api/auth"
         },
         media_folder: "assets/images",
         public_folder: "/assets/images",
