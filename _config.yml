@@ -4,7 +4,12 @@ title: GUCC INSIGHT
 # 반드시 아래 url을 사용자님의 Vercel 주소로 설정해야 메뉴가 작동합니다.
 url: "https://gucc-insight.vercel.app"
 baseurl: "" 
-minimal_mistakes_skin: air
+minimal_mistakes_skin: "air" #화이트 스킨 적용
+
+masthead_title: "GAME GENERATION" # 로고 텍스트
+# 만약 로고 이미지가 있다면 아래 추가
+# logo: "/assets/images/logo.png"
+
 search: true
 remote_theme: "mmistakes/minimal-mistakes"
 
