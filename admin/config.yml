@@ -31,6 +31,8 @@ collections:
         label: "메인 화면 관리"
         name: "index"
         fields:
+          # [1번 요청] 배너 삽입/교체/삭제 필드
           - {label: "메인 배너 이미지", name: "banner_image", widget: "image", required: false}
           - {label: "배너 높이(px)", name: "banner_height", widget: "number", default: 400}
-          - {label: "최근글 제목 두께(100-900)", name: "post_title_weight", widget: "number", default: 300}
+          # [2번 요청] 글씨 두께 조절 필드
+          - {label: "Recent Posts 두께(100-900)", name: "post_title_weight", widget: "number", default: 300}
