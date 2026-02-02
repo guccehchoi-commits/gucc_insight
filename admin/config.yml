@@ -1,9 +1,9 @@
 backend:
   name: github
-  repo: "guccehchoi-commits/gucc_insight" # 예: "gucc/gucc-insight" 형식으로 수정 필요
+  repo: "guccehchoi-commits/gucc_insight"
   branch: master
 
-media_folder: "assets/images" #이미지 저장 경로
+media_folder: "assets/images"
 public_folder: "/assets/images"
 
 collections:
@@ -11,9 +11,10 @@ collections:
     label: "블로그 포스트"
     folder: "_posts"
     create: true
-    # 이 줄이 있으면 제목만 써도 알아서 날짜가 붙어 저장됨
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
+      # ⭐ 이 줄이 추가되어야 블로그 목록에 글이 노출됩니다!
+      - {label: "레이아웃", name: "layout", widget: "hidden", default: "single"}
       - {label: "제목", name: "title", widget: "string"}
       - {label: "날짜", name: "date", widget: "datetime"}
       - {label: "요약", name: "excerpt", widget: "text", required: false}
