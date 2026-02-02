@@ -1,10 +1,82 @@
 ---
-layout: home
-author_profile: false # 왼쪽 프로필을 숨겨서 넓게 사용
-entries_layout: list # 리스트 방식 적용 (or grid 그리드 방식)
-header:
-  overlay_image: /assets/images/main-banner.jpg # 이 사진을 나중에 업로드해야 합니다!
-  overlay_filter: 0.4
-  caption: "GUCC INSIGHT 2026"
-excerpt: "건강한 게임 문화를 만드는 이야기와 생각들, GUCC가 함께합니다."
+layout: null
+title: "게임이용자보호센터 - GUCC INSIGHT"
+description: "건강한 게임 문화를 만드는 이야기와 생각들, GUCC가 함께합니다."
 ---
+<!DOCTYPE HTML>
+<html>
+	<head>
+		{% include head.html %}
+		<style>
+			/* 센터 홍보 페이지 느낌을 위한 폰트 & 화이트톤 강화 */
+			@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+			body, input, select, textarea { font-family: "Pretendard", sans-serif !important; }
+			#intro { background-color: #ffffff !important; color: #000 !important; border-bottom: 1px solid #eee; }
+			#intro h1, #intro p { color: #000 !important; }
+			.logo { font-weight: 800 !important; letter-spacing: 1px; }
+			article.post.featured { border-bottom: 2px solid #000; margin-bottom: 4em; }
+		</style>
+	</head>
+	<body class="is-loading">
+		<div id="wrapper" class="fade-in">
+
+			<div id="intro">
+				<h1>GUCC INSIGHT</h1>
+				<p>게임문화재단 게임이용자보호센터(GUCC) 공식 홍보 채널</p>
+				<ul class="actions">
+					<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+				</ul>
+			</div>
+
+			<header id="header">
+				<a href="{{ "/" | absolute_url }}" class="logo">GUCC INSIGHT</a>
+			</header>
+
+			<nav id="nav">
+				{% include nav.html %}
+			</nav>
+
+			<div id="main">
+				{% assign featured_post = site.posts.first %}
+				<article class="post featured">
+					<header class="major">
+						<span class="date">{{ featured_post.date | date: "%Y-%m-%d" }}</span>
+						<h2><a href="{{ featured_post.url | absolute_url }}">{{ featured_post.title }}</a></h2>
+						<p>{{ featured_post.excerpt | strip_html | truncate: 150 }}</p>
+					</header>
+					{% if featured_post.image %}
+					<a href="{{ featured_post.url | absolute_url }}" class="image main"><img src="{{ featured_post.image | absolute_url }}" alt="" /></a>
+					{% endif %}
+					<ul class="actions">
+						<li><a href="{{ featured_post.url | absolute_url }}" class="button big">자세히 보기</a></li>
+					</ul>
+				</article>
+
+				<section class="posts">
+					{% for post in site.posts offset:1 %}
+					<article>
+						<header>
+							<span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+							<h2><a href="{{ post.url | absolute_url }}">{{ post.title }}</a></h2>
+						</header>
+						{% if post.image %}
+						<a href="{{ post.url | absolute_url }}" class="image fit"><img src="{{ post.image | absolute_url }}" alt="" /></a>
+						{% else %}
+						<a href="{{ post.url | absolute_url }}" class="image fit"><img src="/assets/images/default.jpg" alt="No Image" /></a>
+						{% endif %}
+						<p>{{ post.excerpt | strip_html | truncate: 100 }}</p>
+						<ul class="actions">
+							<li><a href="{{ post.url | absolute_url }}" class="button">기사 읽기</a></li>
+						</ul>
+					</article>
+					{% endfor %}
+				</section>
+			</div>
+
+			{% include foot.html %}
+		</div>
+
+		{% include scripts-main.html %}
+		{% include tracking.html %}
+	</body>
+</html>
