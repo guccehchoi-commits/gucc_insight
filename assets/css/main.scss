@@ -71,22 +71,3 @@ body {
   margin-top: 5em;
 }
 
-/* --- 유령 글자(중복 제목) 강제 삭제 코드 --- */
-
-/* 1) 메인 페이지 상단에 자동으로 뜨는 제목과 설명을 숨김 */
-.page__hero--overlay .page__hero-title,
-.page__hero--overlay .page__hero-excerpt {
-  display: none !important;
-}
-
-/* 2) 유령 글자가 차지하던 불필요한 높이와 여백을 제거 */
-.page__hero--overlay {
-  padding: 0 !important;
-  min-height: 0 !important;
-  background-image: none !important; /* 혹시 모를 배경 겹침 방지 */
-}
-
-/* 3) 헤더 전체 영역의 그림자나 불필요한 라인 정리 */
-.initial {
-  padding-top: 0 !important;
-}
