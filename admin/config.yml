@@ -3,15 +3,15 @@ backend:
   repo: "guccehchoi-commits/gucc_insight" # 예: "gucc/gucc-insight" 형식으로 수정 필요
   branch: master
 
-media_folder: "images"
-public_folder: "/images"
+media_folder: "assets/images" #이미지 저장 경로
+public_folder: "/assets/images"
 
 collections:
   - name: "blog"
     label: "블로그 포스트"
     folder: "_posts"
     create: true
-    # 이 줄이 있으면 제목만 써도 알아서 날짜가 붙어 저장됩니다.
+    # 이 줄이 있으면 제목만 써도 알아서 날짜가 붙어 저장됨
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "제목", name: "title", widget: "string"}
