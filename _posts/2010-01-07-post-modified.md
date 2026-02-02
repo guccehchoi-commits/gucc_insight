@@ -7,6 +7,9 @@ tags:
   - Post Formats
   - readability
   - standard
+date: 2026-02-02T16:51:00.000+09:00
+header:
+  teaser: /assets/images/bio-photo.jpg
 ---
 
 This post has been updated and should show a modified date if used in a layout.
