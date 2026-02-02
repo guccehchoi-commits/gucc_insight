@@ -76,12 +76,5 @@ body {
   padding: 15em 0 !important; /* 상하 여백을 늘려 두께를 조절합니다 */
 }
 
-/* 배너 위에 멋대로 떠 있는 하얀 글자(제목) 숨기기 */
-.page__hero--overlay .page__hero-title {
-  display: none !important;
-}
 
-.page__hero--overlay .page__hero-excerpt {
-  display: none !important;
-}
 
