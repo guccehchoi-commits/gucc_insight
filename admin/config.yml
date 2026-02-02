@@ -13,9 +13,24 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      # ⭐ 이 줄이 추가되어야 블로그 목록에 글이 노출됩니다!
       - {label: "레이아웃", name: "layout", widget: "hidden", default: "single"}
       - {label: "제목", name: "title", widget: "string"}
       - {label: "날짜", name: "date", widget: "datetime"}
+      # 3&4번 요청: 글 목록에 이미지가 나오게 하는 필드
+      - {label: "목록 썸네일 이미지", name: "header", widget: "object", fields: [
+          {label: "이미지 선택", name: "teaser", widget: "image", required: false}
+        ]}
       - {label: "요약", name: "excerpt", widget: "text", required: false}
       - {label: "본문", name: "body", widget: "markdown"}
+
+  # 1&4번 요청: 메인 배너를 Admin에서 삽입/교체/삭제하는 메뉴
+  - name: "pages"
+    label: "페이지 설정"
+    files:
+      - file: "index.html"
+        label: "메인 화면 관리"
+        name: "index"
+        fields:
+          - {label: "메인 배너 이미지", name: "banner_image", widget: "image", required: false}
+          - {label: "배너 높이(px)", name: "banner_height", widget: "number", default: 400}
+          - {label: "최근글 제목 두께(100-900)", name: "post_title_weight", widget: "number", default: 300}
