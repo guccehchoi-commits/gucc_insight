@@ -1,15 +1,20 @@
+# 기본 정보 설정
 encoding: utf-8
 title: GUCC INSIGHT
-minimal_mistakes_skin: air # 깨끗한 하늘색 스킨 적용
+# 반드시 아래 url을 사용자님의 Vercel 주소로 설정해야 메뉴가 작동합니다.
+url: "https://gucc-insight.vercel.app"
+baseurl: "" 
+minimal_mistakes_skin: air
 search: true
 remote_theme: "mmistakes/minimal-mistakes"
 
-# 빌드 설정
+# 빌드 및 게시글 설정
 paginate: 10
 paginate_path: /page:num/
 markdown: kramdown
+excerpt_separator: "" # 요약글 구분자
 
-# 글 목록 레이아웃을 카드형(grid)으로 고정
+# 기본 레이아웃 설정
 defaults:
   - scope:
       path: ""
@@ -19,8 +24,8 @@ defaults:
       author_profile: true
       entries_layout: grid
       classes: wide
-      # teaser: ... 이 줄은 삭제하거나 지워주세요!
 
+# 아카이브 페이지 설정 (404 방지)
 category_archive:
   type: grid
   path: /categories/
@@ -28,19 +33,21 @@ tag_archive:
   type: grid
   path: /tags/
 
+# 필수 플러그인
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-feed
   - jemoji
-  - jekyll-remote-theme  # 이 줄이 반드시 있어야 테마 소스를 가져옵니다!
+  - jekyll-remote-theme
   - jekyll-include-cache
-  # ... 나머지 플러그인들
-  
-# _config.yml 파일 맨 아래에 추가하세요
+
+# 빌드 제외 목록
 exclude:
-  - admin/cms.js          # 혹시 남아있을지 모르는 잔재 차단
+  - admin/cms.js
   - admin/config.yml_backup
   - Gemfile
   - Gemfile.lock
   - vendor
+  - node_modules
+  - .vercel
