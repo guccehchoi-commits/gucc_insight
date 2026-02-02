@@ -3,48 +3,36 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google" content="notranslate" /> <title>Admin Panel</title>
+  <title>Content Manager</title>
 </head>
 <body>
-  <div id="nc-root"></div>
-
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-
   <script>
-    // 3. 자동 실행을 완전히 끄고 제어권을 뺏어옵니다.
-    window.CMS_MANUAL_INIT = true;
-
-    // 4. 화면이 완전히 그려지고 0.5초 뒤에 실행하도록 강제합니다. (충돌 방지)
-    window.onload = function() {
-      setTimeout(() => {
-        CMS.init({
-          config: {
-            backend: {
-              name: "github",
-              repo: "guccehchoi-commits/gucc_insight",
-              branch: "master",
-              base_url: "https://gucc-auth.gucc-ehchoi.workers.dev",
-              auth_endpoint: "auth"
-            },
-            load_config_file: false,
-            media_folder: "assets/images",
-            public_folder: "/assets/images",
-            collections: [
-              {
-                name: "posts",
-                label: "포스트 등록",
-                folder: "_posts",
-                create: true,
-                fields: [
-                  { label: "제목", name: "title", widget: "string" },
-                  { label: "본문", name: "body", widget: "markdown" }
-                ]
-              }
+    CMS.init({
+      config: {
+        backend: {
+          name: "github",
+          repo: "guccehchoi-commits/gucc_insight",
+          branch: "master",
+        },
+        media_folder: "assets/images",
+        public_folder: "/assets/images",
+        collections: [
+          {
+            name: "blog",
+            label: "블로그 포스트",
+            folder: "_posts",
+            create: true,
+            slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+            fields: [
+              { label: "제목", name: "title", widget: "string" },
+              { label: "작성일", name: "date", widget: "datetime" },
+              { label: "본문", name: "body", widget: "markdown" }
             ]
           }
-        });
-      }, 500);
-    };
+        ]
+      }
+    });
   </script>
 </body>
 </html>
