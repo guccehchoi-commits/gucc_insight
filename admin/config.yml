@@ -7,6 +7,7 @@ media_folder: "assets/images"
 public_folder: "/assets/images"
 
 collections:
+  # 1. 블로그 포스트 설정 (이름: blog)
   - name: "blog"
     label: "블로그 포스트"
     folder: "_posts"
@@ -22,10 +23,11 @@ collections:
       - {label: "요약", name: "excerpt", widget: "text", required: false}
       - {label: "본문", name: "body", widget: "markdown"}
 
+  # 2. 메인 페이지 설정 (이름: pages) - 위와 이름이 겹치지 않게 'pages'로 고정
   - name: "pages"
     label: "페이지 설정"
     files:
-      - file: "/index.html"
+      - file: "index.html"
         label: "메인 화면 관리"
         name: "index"
         fields:
