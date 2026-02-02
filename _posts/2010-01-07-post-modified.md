@@ -10,6 +10,7 @@ tags:
 date: 2026-02-02T16:51:00.000+09:00
 header:
   teaser: /assets/images/bio-photo.jpg
+excerpt: 라디오에 나오는 아기 귀엽군
 ---
 
 This post has been updated and should show a modified date if used in a layout.
