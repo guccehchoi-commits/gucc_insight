@@ -15,8 +15,9 @@
           name: "github",
           repo: "guccehchoi-commits/gucc_insight",
           branch: "master",
-          // 여기에 아래 한 줄을 추가하는 게 핵심입니다!
-          site_domain: "gucc-insight.vercel.app" 
+          // 이 한 줄이 깃허브와 Vercel을 강제로 이어줍니다.
+          base_url: "https://api.netlify.com", 
+          auth_endpoint: "auth"
         },
         media_folder: "assets/images",
         public_folder: "/assets/images",
@@ -26,7 +27,6 @@
             label: "블로그 포스트",
             folder: "_posts",
             create: true,
-            slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
             fields: [
               { label: "제목", name: "title", widget: "string" },
               { label: "작성일", name: "date", widget: "datetime" },
