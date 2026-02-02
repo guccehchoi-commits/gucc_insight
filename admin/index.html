@@ -27,6 +27,8 @@
             folder: "_posts",
             create: true,
             slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+           // {{header.teaser}}는 '목록 썸네일 이미지' 경로
+            summary: "{{title}} {{header.teaser}}",
             fields: [
               { label: "레이아웃", name: "layout", widget: "hidden", default: "single" },
               { label: "카테고리", name: "categories", widget: "hidden", default: "blog" },
