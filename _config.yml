@@ -1,6 +1,6 @@
 # 기본 정보 설정
 encoding: utf-8
-title: GUCC INSIGHT
+title: " "
 # 반드시 아래 url을 사용자님의 Vercel 주소로 설정해야 메뉴가 작동합니다.
 url: "https://gucc-insight.vercel.app"
 baseurl: "" 
