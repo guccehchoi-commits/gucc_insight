@@ -26,15 +26,36 @@
             label: "블로그 포스트",
             folder: "_posts",
             create: true,
-            // ⭐ 이 줄이 핵심입니다! 파일명에 날짜를 강제로 붙여줍니다.
-            slug: "{{year}}-{{month}}-{{day}}-{{slug}}", // 한글 제목도 안전하게 변환하여 파일 생성
+            slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
             fields: [
-              // 이 두 줄이 추가되어야 블로그 목록에 나타납니다.
               { label: "레이아웃", name: "layout", widget: "hidden", default: "single" },
               { label: "카테고리", name: "categories", widget: "hidden", default: "blog" },
               { label: "제목", name: "title", widget: "string" },
               { label: "작성일", name: "date", widget: "datetime" },
+              // ⭐ [3번 요청] 글 목록에 이미지가 나오게 하는 필드 추가
+              { label: "목록 썸네일 이미지", name: "header", widget: "object", fields: [
+                  { label: "이미지 선택", name: "teaser", widget: "image", required: false }
+                ] 
+              },
+              { label: "요약", name: "excerpt", widget: "text", required: false },
               { label: "본문", name: "body", widget: "markdown" }
+            ]
+          },
+          // ⭐ [1&2&4번 요청] 드디어 추가된 '페이지 설정' 메뉴!
+          {
+            name: "pages",
+            label: "페이지 설정",
+            files: [
+              {
+                file: "index.html",
+                label: "메인 화면 관리",
+                name: "index",
+                fields: [
+                  { label: "메인 배너 이미지", name: "banner_image", widget: "image", required: false },
+                  { label: "배너 높이(px)", name: "banner_height", widget: "number", default: 400 },
+                  { label: "Recent Posts 두께(100-900)", name: "post_title_weight", widget: "number", default: 300 }
+                ]
+              }
             ]
           }
         ]
