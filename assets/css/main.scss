@@ -4,8 +4,24 @@
 
 @charset "utf-8";
 
-// 1. 테마의 기본 스타일을 불러옵니다.
-@import "minimal-mistakes";
+/* Pretendard 폰트 적용 (가장 세련된 한글 폰트) */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
-// 2. (선택) 여기에 본인이 바꾸고 싶은 디자인 코드를 추가할 수 있습니다.
-// 예: body { font-family: 'Nanum Gothic', sans-serif; }
+:root {
+  --primary-color: #000000;      /* 강조 색상: 블랙 */
+  --text-color: #333333;         /* 본문 색상: 짙은 회색 */
+  --bg-color: #ffffff;           /* 배경: 순백색 */
+  --font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+h1, h2, h3 {
+  color: var(--primary-color);
+  font-weight: 700;
+  letter-spacing: -0.05em; /* 자간을 좁혀 세련미 추가 */
+}
