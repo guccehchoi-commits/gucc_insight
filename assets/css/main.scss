@@ -71,3 +71,8 @@ body {
   margin-top: 5em;
 }
 
+/* 배너 이미지 높이 조절 (500px 숫자를 원하는 대로 바꾸면 됨) */
+.page__hero--overlay {
+  padding: 15em 0 !important; /* 상하 여백을 늘려 두께를 조절합니다 */
+}
+
