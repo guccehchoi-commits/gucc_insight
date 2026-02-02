@@ -1,45 +1,72 @@
 ---
-# 이 대시 세 개가 없으면 작동하지 않습니다.
+# 이 줄이 없으면 Jekyll이 Sass를 컴파일하지 않습니다.
 ---
-@import "minimal-mistakes/skins/air"; // 깨끗한 화이트톤 베이스
+@import "minimal-mistakes/skins/air"; 
 @import "minimal-mistakes"; 
 
-/* 폰트 및 여백 커스텀 - 센터 홍보 페이지 느낌 */
+/* 1. 프리텐다드 폰트: 공공기관/게임 전문 매체 느낌의 정석 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 body {
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif !important;
   background-color: #fff !important;
-  color: #111;
+  color: #1a1a1a;
+  word-break: keep-all; /* 한글 줄바꿈을 단어 단위로 깔끔하게 */
 }
 
-/* 헤더 상단 로고 & 메뉴 영역 */
+/* 2. 상단 메뉴바: 선명하고 신뢰감 있는 블랙 & 화이트 */
 .masthead {
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid #eeeeee;
   background: #fff !important;
+  padding: 1.5rem 0;
 }
 
 .masthead__menu-item a {
   font-weight: 700 !important;
   color: #000 !important;
-  text-transform: uppercase;
+  letter-spacing: -0.5px;
 }
 
-/* 메인 그리드 레이아웃 세련되게 */
+/* 3. 매거진 그리드: 썸네일 강조 및 호버 효과 */
 .grid__item {
-  margin-bottom: 2em;
+  .archive__item {
+    border: none;
+    box-shadow: none;
+    transition: all 0.3s ease-in-out;
+    
+    /* 마우스를 올렸을 때 살짝 떠오르는 효과 */
+    &:hover {
+      transform: translateY(-8px);
+      .archive__item-title a {
+        color: #0056b3; /* 센터의 포인트 컬러가 있다면 변경 가능 */
+      }
+    }
+  }
+
+  .archive__item-teaser {
+    border-radius: 8px; /* 썸네일 모서리를 살짝 둥글게 */
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 1px solid #f0f0f0;
+  }
+
+  .archive__item-title {
+    font-size: 1.35rem !important;
+    font-weight: 800 !important;
+    line-height: 1.4;
+    letter-spacing: -0.04em;
+    margin-top: 0.5em;
+  }
+  
+  .archive__item-excerpt {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.7;
+  }
 }
 
-.archive__item-title {
-  font-size: 1.25rem !important;
-  font-weight: 800;
-  line-height: 1.3;
-  margin-top: 0.5em;
-  letter-spacing: -0.03em;
-}
-
-.archive__item-excerpt {
-  font-size: 0.9rem;
-  color: #666;
-  line-height: 1.6;
+/* 4. 불필요한 장식 제거 */
+.page__footer {
+  border-top: 1px solid #f2f2f2;
+  margin-top: 5em;
 }
