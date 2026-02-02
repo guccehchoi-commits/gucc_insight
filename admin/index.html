@@ -8,7 +8,6 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  
   <script>
     CMS.init({
       config: {
@@ -16,6 +15,8 @@
           name: "github",
           repo: "guccehchoi-commits/gucc_insight",
           branch: "master",
+          // 여기에 아래 한 줄을 추가하는 게 핵심입니다!
+          site_domain: "gucc-insight.vercel.app" 
         },
         media_folder: "assets/images",
         public_folder: "/assets/images",
