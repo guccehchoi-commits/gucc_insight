@@ -1,14 +1,9 @@
 ---
-layout: home
+layout: default
 author_profile: false
-entries_layout: grid
-banner_image: /assets/images/main-banner.jpg
-banner_height: 400
-post_title_weight: 300
 ---
 
 <style>
-  /* 1. 배너 스타일 */
   .main-banner {
     width: 100%;
     background-repeat: no-repeat;
@@ -16,13 +11,14 @@ post_title_weight: 300
     background-size: cover;
     margin-bottom: 40px;
   }
-
-  /* 2. 게시물 제목 두께 (Admin 연동) */
   .archive__item-title {
     font-weight: {{ page.post_title_weight | default: 300 }} !important;
   }
-
-  /* 3. 바둑판 이미지 크기 고정 */
+  .entries-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
   .archive__item-teaser {
     max-height: 200px;
     overflow: hidden;
@@ -36,7 +32,7 @@ post_title_weight: 300
 </style>
 
 {% if page.banner_image %}
-<div class="main-banner" style="height: {{ page.banner_height }}px; background-image: url('{{ page.banner_image }}');"></div>
+<div class="main-banner" style="height: {{ page.banner_height }}px; background-image: url('{{ page.banner_image | relative_url }}');"></div>
 {% endif %}
 
 <div style="text-align: center; padding: 40px 0 60px 0;">
@@ -47,14 +43,13 @@ post_title_weight: 300
 
 <div class="entries-grid">
   {% for post in site.posts %}
-    <article>
+    <article class="archive__item">
       {% if post.header.teaser %}
         <div class="archive__item-teaser">
           <img src="{{ post.header.teaser | relative_url }}" alt="">
         </div>
       {% endif %}
-      
-      <h3 class="archive__item-title" style="font-weight: {{ page.post_title_weight | default: 300 }} !important;">
+      <h3 class="archive__item-title">
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
       </h3>
     </article>
