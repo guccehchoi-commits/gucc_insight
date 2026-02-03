@@ -16,8 +16,9 @@ body {
 .masthead {
   width: 100% !important;
   max-width: none !important;
-  background: #fff !important;
-  border-bottom: 1px solid #ffffff !important;
+  background: #ffffff !important;
+  border-bottom: none !important;       /* 아래쪽 회색 선 제거 */
+  box-shadow: none !important;
   padding: 0.7rem 0 !important; /* 위아래 여백만 유지 */
   margin: 0 !important;
 
