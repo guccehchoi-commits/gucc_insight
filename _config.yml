@@ -6,9 +6,9 @@ url: "https://gucc-insight.vercel.app"
 baseurl: "" 
 minimal_mistakes_skin: "air" #화이트 스킨 적용
 
-masthead_title: "GAME GENERATION" # 로고 텍스트
+masthead_title: "  게임이용자보호센터" # 로고 텍스트
 # 만약 로고 이미지가 있다면 아래 추가
-# logo: "/assets/images/logo.png"
+logo: "/assets/images/ci_img.jpg"
 
 search: true
 remote_theme: "mmistakes/minimal-mistakes"
