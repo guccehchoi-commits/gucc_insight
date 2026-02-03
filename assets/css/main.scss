@@ -4,21 +4,34 @@
 @import "minimal-mistakes/skins/air"; 
 @import "minimal-mistakes"; 
 
-/* 1. 프리텐다드 폰트: 공공기관/게임 전문 매체 느낌의 정석 */
+/* 1. 프리텐다드 폰트 설정 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 body {
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif !important;
   background-color: #fff !important;
   color: #1a1a1a;
-  word-break: keep-all; /* 한글 줄바꿈을 단어 단위로 깔끔하게 */
+  word-break: keep-all;
 }
 
-/* 2. 상단 메뉴바: 선명하고 신뢰감 있는 블랙 & 화이트 */
+/* 2. 상단 메뉴바: 100% 폭 확장 및 양 끝 정렬 */
 .masthead {
   border-bottom: 1px solid #eeeeee;
   background: #fff !important;
-  padding: 1.5rem 0;
+  padding: 1.0rem 0;
+
+  .inner {
+    max-width: 100% !important;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+.masthead__inner-navigation {
+  float: none !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .masthead__menu-item a {
@@ -27,69 +40,75 @@ body {
   letter-spacing: -0.5px;
 }
 
-/* 3. 매거진 그리드: 썸네일 강조 및 호버 효과 */
+/* 3. [핵심 수정] 그리드를 리스트형(가로 배치)으로 전환 */
+.entries-grid {
+  display: flex;
+  flex-direction: column; /* 세로로 쌓기 */
+}
+
 .grid__item {
+  width: 100% !important; /* 한 줄에 하나 */
+  margin-right: 0 !important;
+  margin-bottom: 2.5rem;
+  
   .archive__item {
-    border: none;
-    box-shadow: none;
-    transition: all 0.3s ease-in-out;
+    display: flex;       /* 가로 배치 시작 */
+    align-items: center; /* 이미지와 글 높이 중앙 정렬 */
+    gap: 2rem;           /* 이미지와 글 사이 간격 */
     
-    /* 마우스를 올렸을 때 살짝 떠오르는 효과 */
     &:hover {
-      transform: translateY(-8px);
-      .archive__item-title a {
-        color: #0056b3; /* 센터의 포인트 컬러가 있다면 변경 가능 */
-      }
+      transform: translateY(-4px); /* 리스트형에 맞춰 호버 효과 소폭 수정 */
     }
   }
 
+  /* 이미지 부분 */
   .archive__item-teaser {
-    border-radius: 8px; /* 썸네일 모서리를 살짝 둥글게 */
-    overflow: hidden;
-    margin-bottom: 1rem;
+    flex: 0 0 350px;     /* 이미지 너비 고정 */
+    height: 200px;       /* 이미지 높이 고정 */
+    margin-bottom: 0;    /* 하단 여백 제거 */
     border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* 이미지가 찌그러지지 않게 꽉 채움 */
+    }
+  }
+
+  /* 텍스트 부분 */
+  .archive__item-body {
+    flex: 1;             /* 남은 공간 다 쓰기 */
   }
 
   .archive__item-title {
-    font-size: 1.35rem !important;
+    margin-top: 0;
+    font-size: 1.5rem !important;
     font-weight: 800 !important;
-    line-height: 1.4;
     letter-spacing: -0.04em;
-    margin-top: 0.5em;
+    
+    a { color: #000; text-decoration: none; }
   }
-  
+
   .archive__item-excerpt {
-    font-size: 0.95rem;
+    margin-top: 0.8rem;
+    font-size: 1rem;
     color: #555;
-    line-height: 1.7;
+    line-height: 1.6;
+    /* 3줄 초과 시 생략 (깔끔한 리스트 유지를 위해) */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 
-/* 4. 불필요한 장식 제거 */
+/* 4. 기타 장식 및 배너 조절 */
 .page__footer {
   border-top: 1px solid #f2f2f2;
   margin-top: 5em;
 }
 
-/* 배너 이미지 높이 조절 (500px 숫자를 원하는 대로 바꾸면 됨) */
 .page__hero--overlay {
-  padding: 15em 0 !important; /* 상하 여백을 늘려 두께를 조절합니다 */
+  padding: 15em 0 !important;
 }
-
-/* 상단 메뉴 바 폭을 100%로 확장 */
-.masthead {
-  .inner {
-    max-width: 100% !important; /* 내부 폭 제한 해제 */
-    padding-left: 2em;         /* 양끝 여백 살짝 주기 */
-    padding-right: 2em;
-  }
-}
-
-/* 메뉴 내부 아이템들이 양 끝으로 붙게 하려면 추가 */
-.masthead__inner-navigation {
-  float: none !important;
-  display: flex;
-  justify-content: space-between; /* 로고와 메뉴를 양 끝으로 배치 */
-  align-items: center;
-}
-
