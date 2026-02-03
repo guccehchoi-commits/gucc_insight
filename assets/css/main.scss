@@ -12,39 +12,36 @@ body {
   background-color: #fff !important;
 }
 
-/* 2. 가장 바깥쪽 바구니(.masthead)의 빗장을 풉니다 */
+/* 2. 상단 메뉴 바: 전체 화면 확장 */
 .masthead {
-  width: 100% !important;      /* 너비를 무조건 100%로 */
-  max-width: none !important;   /* 테마가 걸어둔 최대 폭 제한(1280px 등)을 완전히 제거 */
+  width: 100% !important;
+  max-width: none !important;
   background: #fff !important;
   border-bottom: 1px solid #eeeeee !important;
-  padding: 0.5rem 0 !important;
-  margin: 0 !important;         /* 혹시 모를 주변 여백 제거 */
-}
+  padding: 0.7rem 0 !important;
+  margin: 0 !important;
 
-/* 3. 바구니 내부 내용물들도 끝에서 끝까지 정렬 */
-.masthead__inner-wrap {
-  max-width: none !important;   /* 내부 박스 제한도 같이 제거 */
-  width: 100% !important;
+  .inner, .masthead__inner-wrap {
+    max-width: none !important;
+    width: 100% !important;
+  }
 }
 
 .masthead__inner-navigation {
   max-width: none !important;
   display: flex !important;
-  justify-content: space-between !important; /* 로고-메뉴 양 끝 배치 */
-  padding-left: 3% !important;  /* 너무 딱 붙으면 이상하니 살짝만 여백 */
-  padding-right: 3% !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0 4% !important; /* 양옆 여백 살짝 부여 */
 }
 
-/* 메뉴 글자들이 세로로 깨지지 않게 방지 */
 .masthead__menu {
   float: none !important;
-  margin-left: auto !important; /* 오른쪽으로 밀기 */
 }
 
 .masthead__menu-item {
-  display: inline-block !important; /* 가로 나열 */
-  margin-left: 1.5rem !important;
+  display: inline-block !important;
+  margin-left: 2rem !important;
 }
 
 .masthead__menu-item a {
@@ -52,31 +49,33 @@ body {
   color: #000 !important;
 }
 
-/* 4. 포스트 레이아웃: 가로 리스트형으로 강제 전환 */
+/* 3. 포스트 레이아웃: 데스크톱 매거진 리스트형 (이미지 왼쪽 / 텍스트 오른쪽) */
 .archive, .entries-grid {
   display: block !important;
+  max-width: 1200px !important; /* 본문 영역은 가독성을 위해 적절히 제한 */
+  margin: 0 auto !important;
+  padding: 0 20px !important;
 }
 
 .grid__item {
   width: 100% !important;
-  margin-right: 0 !important;
+  margin: 0 0 60px 0 !important; /* 게시글 간 간격 확대 */
   float: none !important;
-  margin-bottom: 50px !important;
 
   article.archive__item {
-    display: flex !important;    /* 가로 배치 핵심 */
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 2.5rem !important;      /* 사진과 글 사이 간격 */
+    display: flex !important;
+    flex-direction: row !important; /* 가로 배치 강제 */
+    align-items: flex-start !important; /* 텍스트가 위쪽부터 시작되도록 */
+    gap: 3rem !important; /* 이미지와 텍스트 사이 넓은 공간 확보 */
   }
 
-  /* 이미지 부분 크기 고정 */
+  /* 이미지 (좌측 배치) */
   .archive__item-teaser {
-    flex: 0 0 350px !important;  /* 이미지 가로 350px */
-    height: 200px !important;    /* 이미지 세로 200px */
+    flex: 0 0 400px !important; /* 이미지 크기를 데스크톱에 맞춰 더 확대 */
+    height: 250px !important;
     margin-bottom: 0 !important;
     overflow: hidden !important;
-    border-radius: 8px;
+    border-radius: 4px;
 
     img {
       width: 100% !important;
@@ -85,35 +84,50 @@ body {
     }
   }
 
-  /* 텍스트 부분 */
+  /* 텍스트 영역 (우측 배치) */
+  .archive__item-body {
+    flex: 1 !important; /* 남은 공간을 텍스트가 모두 차지 */
+  }
+
   .archive__item-title {
     margin-top: 0 !important;
-    font-size: 1.5rem !important;
+    font-size: 1.7rem !important; /* 제목 크기 확대 */
     font-weight: 800 !important;
-    margin-bottom: 0.8rem !important;
+    margin-bottom: 1rem !important;
+    
+    a {
+      color: #000 !important;
+      text-decoration: none !important;
+    }
   }
 
   .archive__item-excerpt {
     display: block !important;
-    font-size: 1.05rem !important;
-    line-height: 1.7 !important;
-    color: #444 !important;
-    /* 최대 4줄까지만 표시하고 말줄임 */
+    font-size: 1.1rem !important;
+    line-height: 1.8 !important;
+    color: #333 !important;
+    /* 텍스트 양이 많아도 모니터에서 깔끔하도록 5줄 제한 */
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 }
 
-/* 모바일 대응: 화면이 좁아지면 사진이 위로 가게 복구 */
+/* 4. 메인 배너 키우기 전용 설정 */
+.page__hero--overlay {
+  padding: 18em 0 !important; /* 배너 높이를 기존보다 대폭 확장 */
+}
+
+/* 5. 모바일 대응: 768px 미만에서는 다시 세로형으로 변경 */
 @media (max-width: 768px) {
   .grid__item article.archive__item {
-    flex-direction: column !important;
-    gap: 1rem !important;
+    flex-direction: column !important; /* 모바일은 다시 사진이 위로 */
+    gap: 1.5rem !important;
   }
   .grid__item .archive__item-teaser {
     flex: 0 0 auto !important;
     width: 100% !important;
+    height: 200px !important;
   }
 }
