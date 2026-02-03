@@ -47,25 +47,23 @@ plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
 
-# 빌드 제외 목록
+# 빌드 제외 목록 (중복 없이 하나로 합침)
 exclude:
+  - vendor/
+  - vendor/bundle/
+  - .bundle/
+  - .sass-cache/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - .vercel/
   - admin/cms.js
   - admin/config.yml_backup
-  - Gemfile
-  - Gemfile.lock
-  - vendor
-  - node_modules
-  - .vercel
 
-# 기존 설정 아래에 추가
-exclude:
-  - vendor
-  - .bundle
-  - .sass-cache
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor/bundle/ # 👈 에러가 났던 위치를 제외 목록에 넣습니다.
+# 빌드 시 삭제하지 않고 유지할 파일들
+keep_files:
+  - assets/images
+  - admin/
 
 keep_files:
   - assets/images # 이미지는 지우지 말고 유지하라고 명시합니다.
