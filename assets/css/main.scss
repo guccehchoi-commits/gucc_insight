@@ -76,5 +76,20 @@ body {
   padding: 15em 0 !important; /* 상하 여백을 늘려 두께를 조절합니다 */
 }
 
+/* 상단 메뉴 바 폭을 100%로 확장 */
+.masthead {
+  .inner {
+    max-width: 100% !important; /* 내부 폭 제한 해제 */
+    padding-left: 2em;         /* 양끝 여백 살짝 주기 */
+    padding-right: 2em;
+  }
+}
 
+/* 메뉴 내부 아이템들이 양 끝으로 붙게 하려면 추가 */
+.masthead__inner-navigation {
+  float: none !important;
+  display: flex;
+  justify-content: space-between; /* 로고와 메뉴를 양 끝으로 배치 */
+  align-items: center;
+}
 
