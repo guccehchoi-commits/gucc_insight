@@ -1,12 +1,53 @@
 ---
-title: "Post: Quote"
 categories:
   - Blog
+title: “이 판만 더”는 왜 항상 거짓말이 될까
 tags:
   - Post Formats
   - quote
+date: 2026-02-03T14:47:00.000+09:00
+header:
+  teaser: assets/images/geim-aikon-eul-deulgo-jangnan-dayang-han-salamdeul-1-.jpg
+excerpt: |-
+  게임을 오래 해서 문제가 되는 게 아니다.
+  게임을 안 하고 있을 때도 계속 생각나면, 그때부터 점검이 필요하다.
 ---
+어떤 사람에게 게임은 취미고,
 
-> Only one thing is impossible for God: To find any sense in any copyright law on the planet.
-  
-> <cite><a href="http://www.brainyquote.com/quotes/quotes/m/marktwain163473.html">Mark Twain</a></cite>
+어떤 사람에게 게임은 하루의 기분을 결정하는 변수다.
+
+차이는 시간보다 **영향력**이다.
+
+
+
+> ## 2️⃣ 스토리처럼 읽히는 문장형 (3~5문장)
+>
+> >
+> > 어제도 빨리 자려고 했다.
+> >
+> > 이기면 끄려고 했고, 지면 한 판만 더 하려고 했다.
+> >
+> > 결국 새벽이었다.
+> >
+> > 문제는 게임이 아니라,
+> >
+> > 멈출 기준을 미리 정하지 않았다는 거였다.
+> >
+> >
+> >
+> > 게임을 해서 화가 난 게 아니다.
+> >
+> > 이미 지쳐 있었는데, 게임이 마지막 자극이 된 거다.
+> >
+> > 그래서 화는 게임에게 갔지만,
+> >
+> > 원인은 그 전에 쌓여 있었다.
+>
+>
+>
+>
+>
+>
+>
+>
+>
