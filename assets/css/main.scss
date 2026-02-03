@@ -12,52 +12,73 @@ body {
   background-color: #fff !important;
 }
 
-/* 2. 메뉴 바: 좌우 끝까지 시원하게 늘리기 */
+/* 2. 상단 메뉴 바: 좌우 100% 확장 및 요소 정렬 */
 .masthead {
   background: #fff !important;
   border-bottom: 1px solid #eeeeee !important;
-  padding: 1rem 0 !important;
+  padding: 0.5rem 0 !important;
 
-  /* 핵심: 테마 내부에서 폭을 제한하는 모든 요소를 100%로 해제 */
+  /* 핵심: 내부의 모든 폭 제한 박스를 100%로 해제 */
   .inner, .masthead__inner-wrap {
     max-width: 100% !important; 
     padding-left: 5% !important;
     padding-right: 5% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
 
+/* 로고(왼쪽)와 메뉴 리스트(오른쪽)를 양 끝으로 배치 */
 .masthead__inner-navigation {
   float: none !important;
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  max-width: 100% !important; /* 내부 네비게이션 폭 제한 해제 */
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
-/* 3. 포스트 레이아웃: 그리드 → 리스트(가로 배치) 강제 전환 */
+/* 메뉴 글자들이 세로로 깨지지 않게 방지 */
+.masthead__menu {
+  float: none !important;
+  margin-left: auto !important; /* 오른쪽으로 밀기 */
+}
+
+.masthead__menu-item {
+  display: inline-block !important; /* 가로 나열 */
+  margin-left: 1.5rem !important;
+}
+
+.masthead__menu-item a {
+  font-weight: 700 !important;
+  color: #000 !important;
+}
+
+/* 3. 포스트 레이아웃: 가로 리스트형으로 강제 전환 */
 .archive, .entries-grid {
-  display: block !important; /* 그리드 해제 */
+  display: block !important;
 }
 
 .grid__item {
-  width: 100% !important; /* 무조건 한 줄 차지 */
+  width: 100% !important;
   margin-right: 0 !important;
   float: none !important;
-  margin-bottom: 40px !important;
+  margin-bottom: 50px !important;
 
   article.archive__item {
-    display: flex !important;    /* 가로 정렬 */
+    display: flex !important;    /* 가로 배치 핵심 */
     flex-direction: row !important;
-    align-items: flex-start !important;
-    gap: 2rem !important;        /* 사진과 글 사이 간격 */
+    align-items: center !important;
+    gap: 2.5rem !important;      /* 사진과 글 사이 간격 */
   }
 
   /* 이미지 부분 크기 고정 */
   .archive__item-teaser {
-    flex: 0 0 300px !important;  /* 이미지 가로 300px 고정 */
-    height: 180px !important;    /* 이미지 세로 180px 고정 */
+    flex: 0 0 350px !important;  /* 이미지 가로 350px */
+    height: 200px !important;    /* 이미지 세로 200px */
     margin-bottom: 0 !important;
     overflow: hidden !important;
+    border-radius: 8px;
 
     img {
       width: 100% !important;
@@ -69,22 +90,29 @@ body {
   /* 텍스트 부분 */
   .archive__item-title {
     margin-top: 0 !important;
-    font-size: 1.4rem !important;
+    font-size: 1.5rem !important;
     font-weight: 800 !important;
+    margin-bottom: 0.8rem !important;
   }
 
   .archive__item-excerpt {
     display: block !important;
-    font-size: 1rem !important;
-    line-height: 1.6 !important;
-    color: #555 !important;
+    font-size: 1.05rem !important;
+    line-height: 1.7 !important;
+    color: #444 !important;
+    /* 최대 4줄까지만 표시하고 말줄임 */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 
-/* 모바일에서는 다시 세로로 보이게 조절 */
+/* 모바일 대응: 화면이 좁아지면 사진이 위로 가게 복구 */
 @media (max-width: 768px) {
   .grid__item article.archive__item {
     flex-direction: column !important;
+    gap: 1rem !important;
   }
   .grid__item .archive__item-teaser {
     flex: 0 0 auto !important;
