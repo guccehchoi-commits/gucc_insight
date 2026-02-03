@@ -2,10 +2,10 @@
 # 이 줄이 없으면 Jekyll이 Sass를 컴파일하지 않습니다.
 ---
 
-/* 테마 변수 덮어쓰기 (가장 깔끔한 방법) */
-$masthead-background-color: #ffffff; // 상단바 배경색 근본 해결
-$masthead-background-color-mobile: #ffffff; // 모바일도 흰색으로
-$border-color: #ffffff; // 테마 전체에 깔린 미세한 회색 선들을 흰색으로
+/* 테마 변수 설정 (반드시 @import 보다 위에 있어야 근본적으로 적용됩니다) */
+$masthead-background-color: #ffffff;
+$masthead-background-color-mobile: #ffffff;
+$border-color: #ffffff; 
 
 @import "minimal-mistakes/skins/air"; 
 @import "minimal-mistakes"; 
@@ -15,24 +15,30 @@ $border-color: #ffffff; // 테마 전체에 깔린 미세한 회색 선들을 �
 
 body {
   font-family: "Pretendard", sans-serif !important;
-  background-color: #ffffff !important; /* 완전 흰색 */
+  background-color: #ffffff !important; 
 }
 
-/* 2. 상단 메뉴 바: 전체 화면 확장 (여백 0 버전) */
+/* 2. 상단 메뉴 바: 회색 띠 제거 및 전체 화면 확장 */
+.site-header {
+  background-color: #ffffff !important; /* 상단바를 감싸는 최상위 박스 흰색 고정 */
+  border-bottom: none !important;
+}
+
 .masthead {
   width: 100% !important;
   max-width: none !important;
-  background: #ffffff !important;
-  border-bottom: none !important;       /* 아래쪽 회색 선 제거 */
+  background-color: #ffffff !important;
+  border-bottom: none !important;       
   box-shadow: none !important;
-  padding: 0.7rem 0 !important; /* 위아래 여백만 유지 */
+  padding: 0.7rem 0 !important; 
   margin: 0 !important;
 
   .inner, .masthead__inner-wrap {
     max-width: none !important;
     width: 100% !important;
-    padding: 0 !important; /* 내부 여백 완전 제거 */
+    padding: 0 !important; 
     margin: 0 !important;
+    background-color: transparent !important; /* 내부 박스 회색기 제거 */
   }
 }
 
@@ -42,16 +48,17 @@ body {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  padding: 0 !important; /* 양옆 여백 0으로 수정 */
+  padding: 0 !important; 
+  background-color: transparent !important;
 }
 
-/* 로고와 메뉴 아이템이 너무 벽에 붙어 보인다면 각각 미세 조절 */
+/* 로고와 메뉴 아이템 위치 조절 */
 .masthead__item--logo {
-  padding-left: 10px !important; /* 로고가 벽에 너무 붙으면 이 값만 조절하세요 */
+  padding-left: 10px !important; 
 }
 
 .masthead__menu {
-  padding-right: 10px !important; /* 메뉴가 벽에 너무 붙으면 이 값만 조절하세요 */
+  padding-right: 10px !important; 
 }
 
 .masthead__menu-item {
@@ -75,20 +82,19 @@ body {
 .grid__item {
   width: 100% !important;
   margin-bottom: 50px !important;
-  float: none !important; /* 기존 float 제거 */
+  float: none !important; 
 
   article.archive__item {
-    display: flex !important;           /* 가로 정렬의 핵심 */
-    flex-direction: row !important;      /* 무조건 가로로 배치 */
-    align-items: flex-start !important;  /* 상단 기준 정렬 */
-    gap: 40px !important;                /* 이미지와 텍스트 사이 간격 */
+    display: flex !important;           
+    flex-direction: row !important;      
+    align-items: flex-start !important;  
+    gap: 40px !important;                
     width: 100% !important;
   }
 
-  /* [좌측 이미지 고정] */
   .archive__item-teaser {
-    order: 1 !important;                 /* 강제로 첫 번째 순서 배치 */
-    flex: 0 0 400px !important;          /* 데스크톱 이미지 너비 400px 고정 */
+    order: 1 !important;                 
+    flex: 0 0 400px !important;          
     height: 250px !important;
     margin: 0 !important;
     overflow: hidden !important;
@@ -101,17 +107,15 @@ body {
     }
   }
 
-  /* [우측 텍스트 영역] - 제목과 요약본 포함 */
   .archive__item-body, 
-  .archive__item-contents {              /* 테마에 따라 클래스명이 다를 수 있어 둘 다 지정 */
-    order: 2 !important;                 /* 이미지 다음 순서 배치 */
-    flex: 1 !important;                  /* 남은 가로 공간 모두 점유 */
+  .archive__item-contents {              
+    order: 2 !important;                 
+    flex: 1 !important;                  
     display: flex !important;
-    flex-direction: column !important;   /* 제목 아래에 요약이 오도록 */
+    flex-direction: column !important;   
     text-align: left !important;
   }
 
-  /* 제목 스타일 */
   .archive__item-title {
     margin: 0 0 15px 0 !important;
     font-size: 1.6rem !important;
@@ -124,7 +128,6 @@ body {
     }
   }
 
-  /* 요약 텍스트 (본문) */
   .archive__item-excerpt {
     margin: 0 !important;
     padding: 0 !important;
@@ -132,7 +135,6 @@ body {
     line-height: 1.7 !important;
     color: #555 !important;
     word-break: keep-all !important;
-    /* 5줄 이상일 경우 생략 처리 */
     display: -webkit-box !important;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
@@ -140,7 +142,7 @@ body {
   }
 }
 
-/* 모바일 화면에서는 다시 사진이 위로 오도록 조절 */
+/* 모바일 화면 대응 */
 @media (max-width: 768px) {
   .grid__item article.archive__item {
     flex-direction: column !important;
