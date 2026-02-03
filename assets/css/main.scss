@@ -2,11 +2,17 @@
 # 이 줄이 없으면 Jekyll이 Sass를 컴파일하지 않습니다.
 ---
 
-/* 테마 변수 설정 (반드시 @import 보다 위에 있어야 근본적으로 적용됩니다) */
-$masthead-background-color: #ffffff;
-$masthead-background-color-mobile: #ffffff;
-$border-color: #ffffff; 
+/* [유지보수 핵심] 여기 컬러값만 바꾸면 사이트 전체 색상이 바뀝니다 */
+$point-color: #ffffff;      // 상단바 및 배경 메인 컬러
+$point-border: #ffffff;     // 경계선 컬러 (안 보이게 하려면 배경색과 통일)
 
+/* 테마 시스템에 우리 컬러 주입 */
+$masthead-background-color: $point-color;
+$masthead-background-color-mobile: $point-color;
+$border-color: $point-border;
+$faded-background-color: $point-color; // air 스킨 특유의 회색기 제거
+
+/* 테마 로드 */
 @import "minimal-mistakes/skins/air"; 
 @import "minimal-mistakes"; 
 
@@ -15,19 +21,19 @@ $border-color: #ffffff;
 
 body {
   font-family: "Pretendard", sans-serif !important;
-  background-color: #ffffff !important; 
+  background-color: $point-color !important; 
 }
 
-/* 2. 상단 메뉴 바: 회색 띠 제거 및 전체 화면 확장 */
+/* 2. 상단 메뉴 바: 전체 화면 확장 및 회색기 완전 제거 */
 .site-header {
-  background-color: #ffffff !important; /* 상단바를 감싸는 최상위 박스 흰색 고정 */
+  background-color: $point-color !important;
   border-bottom: none !important;
 }
 
 .masthead {
   width: 100% !important;
   max-width: none !important;
-  background-color: #ffffff !important;
+  background-color: $point-color !important;
   border-bottom: none !important;       
   box-shadow: none !important;
   padding: 0.7rem 0 !important; 
@@ -38,7 +44,7 @@ body {
     width: 100% !important;
     padding: 0 !important; 
     margin: 0 !important;
-    background-color: transparent !important; /* 내부 박스 회색기 제거 */
+    background-color: transparent !important; 
   }
 }
 
@@ -53,22 +59,12 @@ body {
 }
 
 /* 로고와 메뉴 아이템 위치 조절 */
-.masthead__item--logo {
-  padding-left: 10px !important; 
-}
-
-.masthead__menu {
-  padding-right: 10px !important; 
-}
-
+.masthead__item--logo { padding-left: 10px !important; }
+.masthead__menu { padding-right: 10px !important; }
 .masthead__menu-item {
   display: inline-block !important;
   margin-left: 2rem !important;
-}
-
-.masthead__menu-item a {
-  font-weight: 700 !important;
-  color: #000 !important;
+  a { font-weight: 700 !important; color: #000 !important; }
 }
 
 /* 3. 포스트 레이아웃: 데스크톱 가로 리스트형 확실히 고정 */
@@ -107,8 +103,7 @@ body {
     }
   }
 
-  .archive__item-body, 
-  .archive__item-contents {              
+  .archive__item-body, .archive__item-contents {              
     order: 2 !important;                 
     flex: 1 !important;                  
     display: flex !important;
@@ -121,11 +116,7 @@ body {
     font-size: 1.6rem !important;
     font-weight: 800 !important;
     line-height: 1.3 !important;
-
-    a {
-      color: #1a1a1a !important;
-      text-decoration: none !important;
-    }
+    a { color: #1a1a1a !important; text-decoration: none !important; }
   }
 
   .archive__item-excerpt {
@@ -144,13 +135,6 @@ body {
 
 /* 모바일 화면 대응 */
 @media (max-width: 768px) {
-  .grid__item article.archive__item {
-    flex-direction: column !important;
-    gap: 20px !important;
-  }
-  .grid__item .archive__item-teaser {
-    flex: 0 0 auto !important;
-    width: 100% !important;
-    height: 220px !important;
-  }
+  .grid__item article.archive__item { flex-direction: column !important; gap: 20px !important; }
+  .grid__item .archive__item-teaser { flex: 0 0 auto !important; width: 100% !important; height: 220px !important; }
 }
