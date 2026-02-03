@@ -4,111 +4,88 @@
 @import "minimal-mistakes/skins/air"; 
 @import "minimal-mistakes"; 
 
-/* 1. 프리텐다드 폰트 설정 */
+/* 1. 폰트 설정 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 body {
-  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif !important;
+  font-family: "Pretendard", sans-serif !important;
   background-color: #fff !important;
-  color: #1a1a1a;
-  word-break: keep-all;
 }
 
-/* 2. 상단 메뉴바: 100% 폭 확장 및 양 끝 정렬 */
+/* 2. 메뉴 바: 좌우 끝까지 시원하게 늘리기 */
 .masthead {
-  border-bottom: 1px solid #eeeeee;
   background: #fff !important;
-  padding: 1.0rem 0;
+  border-bottom: 1px solid #eeeeee !important;
+  padding: 1rem 0 !important;
 
   .inner {
-    max-width: 100% !important;
-    padding-left: 40px;
-    padding-right: 40px;
+    max-width: 100% !important; /* 핵심: 폭 제한 해제 */
+    padding-left: 5% !important;
+    padding-right: 5% !important;
   }
 }
 
 .masthead__inner-navigation {
   float: none !important;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
 }
 
-.masthead__menu-item a {
-  font-weight: 700 !important;
-  color: #000 !important;
-  letter-spacing: -0.5px;
-}
-
-/* 3. [핵심 수정] 그리드를 리스트형(가로 배치)으로 전환 */
-.entries-grid {
-  display: flex;
-  flex-direction: column; /* 세로로 쌓기 */
+/* 3. 포스트 레이아웃: 그리드 → 리스트(가로 배치) 강제 전환 */
+.archive, .entries-grid {
+  display: block !important; /* 그리드 해제 */
 }
 
 .grid__item {
-  width: 100% !important; /* 한 줄에 하나 */
+  width: 100% !important; /* 무조건 한 줄 차지 */
   margin-right: 0 !important;
-  margin-bottom: 2.5rem;
-  
-  .archive__item {
-    display: flex;       /* 가로 배치 시작 */
-    align-items: center; /* 이미지와 글 높이 중앙 정렬 */
-    gap: 2rem;           /* 이미지와 글 사이 간격 */
-    
-    &:hover {
-      transform: translateY(-4px); /* 리스트형에 맞춰 호버 효과 소폭 수정 */
-    }
+  float: none !important;
+  margin-bottom: 40px !important;
+
+  article.archive__item {
+    display: flex !important;    /* 가로 정렬 */
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 2rem !important;        /* 사진과 글 사이 간격 */
   }
 
-  /* 이미지 부분 */
+  /* 이미지 부분 크기 고정 */
   .archive__item-teaser {
-    flex: 0 0 350px;     /* 이미지 너비 고정 */
-    height: 200px;       /* 이미지 높이 고정 */
-    margin-bottom: 0;    /* 하단 여백 제거 */
-    border: 1px solid #f0f0f0;
-    border-radius: 8px;
-    
+    flex: 0 0 300px !important;  /* 이미지 가로 300px 고정 */
+    height: 180px !important;    /* 이미지 세로 180px 고정 */
+    margin-bottom: 0 !important;
+    overflow: hidden !important;
+
     img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* 이미지가 찌그러지지 않게 꽉 채움 */
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
     }
   }
 
   /* 텍스트 부분 */
-  .archive__item-body {
-    flex: 1;             /* 남은 공간 다 쓰기 */
-  }
-
   .archive__item-title {
-    margin-top: 0;
-    font-size: 1.5rem !important;
+    margin-top: 0 !important;
+    font-size: 1.4rem !important;
     font-weight: 800 !important;
-    letter-spacing: -0.04em;
-    
-    a { color: #000; text-decoration: none; }
   }
 
   .archive__item-excerpt {
-    margin-top: 0.8rem;
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
-    /* 3줄 초과 시 생략 (깔끔한 리스트 유지를 위해) */
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    display: block !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    color: #555 !important;
   }
 }
 
-/* 4. 기타 장식 및 배너 조절 */
-.page__footer {
-  border-top: 1px solid #f2f2f2;
-  margin-top: 5em;
-}
-
-.page__hero--overlay {
-  padding: 15em 0 !important;
+/* 모바일에서는 다시 세로로 보이게 조절 */
+@media (max-width: 768px) {
+  .grid__item article.archive__item {
+    flex-direction: column !important;
+  }
+  .grid__item .archive__item-teaser {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+  }
 }
