@@ -12,30 +12,28 @@ body {
   background-color: #fff !important;
 }
 
-/* 2. 상단 메뉴 바: 좌우 100% 확장 및 요소 정렬 */
+/* 2. 가장 바깥쪽 바구니(.masthead)의 빗장을 풉니다 */
 .masthead {
+  width: 100% !important;      /* 너비를 무조건 100%로 */
+  max-width: none !important;   /* 테마가 걸어둔 최대 폭 제한(1280px 등)을 완전히 제거 */
   background: #fff !important;
   border-bottom: 1px solid #eeeeee !important;
   padding: 0.5rem 0 !important;
-
-  /* 핵심: 내부의 모든 폭 제한 박스를 100%로 해제 */
-  .inner, .masthead__inner-wrap {
-    max-width: 100% !important; 
-    padding-left: 5% !important;
-    padding-right: 5% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
+  margin: 0 !important;         /* 혹시 모를 주변 여백 제거 */
 }
 
-/* 로고(왼쪽)와 메뉴 리스트(오른쪽)를 양 끝으로 배치 */
-.masthead__inner-navigation {
-  float: none !important;
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
+/* 3. 바구니 내부 내용물들도 끝에서 끝까지 정렬 */
+.masthead__inner-wrap {
+  max-width: none !important;   /* 내부 박스 제한도 같이 제거 */
   width: 100% !important;
-  max-width: 100% !important;
+}
+
+.masthead__inner-navigation {
+  max-width: none !important;
+  display: flex !important;
+  justify-content: space-between !important; /* 로고-메뉴 양 끝 배치 */
+  padding-left: 3% !important;  /* 너무 딱 붙으면 이상하니 살짝만 여백 */
+  padding-right: 3% !important;
 }
 
 /* 메뉴 글자들이 세로로 깨지지 않게 방지 */
@@ -54,7 +52,7 @@ body {
   color: #000 !important;
 }
 
-/* 3. 포스트 레이아웃: 가로 리스트형으로 강제 전환 */
+/* 4. 포스트 레이아웃: 가로 리스트형으로 강제 전환 */
 .archive, .entries-grid {
   display: block !important;
 }
