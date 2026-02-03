@@ -4,13 +4,13 @@
 
 /* [유지보수 핵심] 여기 컬러값만 바꾸면 사이트 전체 색상이 바뀝니다 */
 $point-color: #ffffff;      // 상단바 및 배경 메인 컬러
-$point-border: #ffffff;     // 경계선 컬러 (안 보이게 하려면 배경색과 통일)
+$point-border: #ffffff;     // 경계선 컬러
 
 /* 테마 시스템에 우리 컬러 주입 */
 $masthead-background-color: $point-color;
 $masthead-background-color-mobile: $point-color;
 $border-color: $point-border;
-$faded-background-color: $point-color; // air 스킨 특유의 회색기 제거
+$faded-background-color: $point-color; 
 
 /* 테마 로드 */
 @import "minimal-mistakes/skins/air"; 
@@ -24,18 +24,25 @@ body {
   background-color: $point-color !important; 
 }
 
-/* 2. 상단 메뉴 바: 전체 화면 확장 및 회색기 완전 제거 */
-.site-header {
+/* 2. 상단 메뉴 바: 회색기 및 그림자 완전 제거 */
+/* 범인이 될 수 있는 모든 레이어(#site-nav, .greedy-nav 등)를 한 번에 타격합니다. */
+.site-header, 
+.masthead, 
+.masthead__inner-wrap, 
+.masthead__inner-navigation,
+#site-nav,
+.greedy-nav,
+.greedy-nav button {
   background-color: $point-color !important;
+  background: $point-color !important;
+  border: none !important;
   border-bottom: none !important;
+  box-shadow: none !important;   /* 선처럼 보이는 얇은 그림자 제거 */
 }
 
 .masthead {
   width: 100% !important;
   max-width: none !important;
-  background-color: $point-color !important;
-  border-bottom: none !important;       
-  box-shadow: none !important;
   padding: 0.7rem 0 !important; 
   margin: 0 !important;
 
@@ -44,7 +51,6 @@ body {
     width: 100% !important;
     padding: 0 !important; 
     margin: 0 !important;
-    background-color: transparent !important; 
   }
 }
 
@@ -55,7 +61,6 @@ body {
   justify-content: space-between !important;
   align-items: center !important;
   padding: 0 !important; 
-  background-color: transparent !important;
 }
 
 /* 로고와 메뉴 아이템 위치 조절 */
