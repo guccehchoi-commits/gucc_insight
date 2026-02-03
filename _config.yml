@@ -64,6 +64,3 @@ exclude:
 keep_files:
   - assets/images
   - admin/
-
-keep_files:
-  - assets/images # 이미지는 지우지 말고 유지하라고 명시합니다.
