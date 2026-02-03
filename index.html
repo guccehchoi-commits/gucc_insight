@@ -1,27 +1,79 @@
 ---
 layout: default
 banner_image: assets/images/geim-aikon-eul-deulgo-jangnan-dayang-han-salamdeul-1-.jpg
-banner_height: 200
-post_title_weight: 200
+banner_height: 500  # 배너를 더 키우고 싶다고 하셔서 500으로 수정
 ---
 
 <style>
-  /* 그리드 레이아웃 설정 */
-  .entries-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
+  /* 데스크톱용 리스트 레이아웃 */
+  .custom-list-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
   }
-  .archive__item-teaser {
-    width: 100%;
-    height: 200px;
+
+  .custom-list-item {
+    display: flex;
+    align-items: flex-start; /* 상단 정렬 */
+    gap: 40px;               /* 사진과 글 사이 간격 */
+    margin-bottom: 60px;     /* 게시글 간 간격 */
+    border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 40px;
+  }
+
+  /* 이미지 영역 */
+  .custom-list-teaser {
+    flex: 0 0 400px;         /* 이미지 가로 폭 400px 고정 */
+    height: 250px;           /* 이미지 세로 높이 */
     overflow: hidden;
+    border-radius: 8px;
   }
-  .archive__item-teaser img {
+
+  .custom-list-teaser img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  /* 텍스트 영역 */
+  .custom-list-content {
+    flex: 1;                 /* 남은 공간 다 차지 */
+  }
+
+  .custom-list-title {
+    font-size: 1.8rem;
+    font-weight: 900 !important;
+    margin: 0 0 15px 0;
+    letter-spacing: -1px;
+  }
+
+  .custom-list-title a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .custom-list-excerpt {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #555;
+    /* 4줄 초과 시 생략 처리 */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* 모바일 대응 */
+  @media (max-width: 768px) {
+    .custom-list-item {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .custom-list-teaser {
+      flex: 0 0 auto;
+      width: 100%;
+      height: 200px;
+    }
   }
 </style>
 
@@ -29,22 +81,32 @@ post_title_weight: 200
 <div style="width: 100%; height: {{ page.banner_height | default: 400 }}px; background: url('{{ page.banner_image | relative_url }}') no-repeat center/cover;"></div>
 {% endif %}
 
-<div style="text-align: center; padding: 60px 0;">
-  <h1 style="font-size: 3.5rem; font-weight: 950; letter-spacing: -3px; margin: 0;">GUCC INSIGHT</h1>
-  <p style="color: #888; letter-spacing: 2px;">GAME USER CARE CENTER MAGAZINE</p>
+<div style="text-align: center; padding: 80px 0;">
+  <h1 style="font-size: 4rem; font-weight: 950; letter-spacing: -3px; margin: 0;">GUCC INSIGHT</h1>
+  <p style="color: #888; letter-spacing: 2px; font-weight: 600;">GAME USER CARE CENTER MAGAZINE</p>
 </div>
 
-<div class="entries-grid">
+<div class="custom-list-container">
   {% for post in site.posts %}
-    <article class="archive__item">
+    <article class="custom-list-item">
       {% if post.header.teaser %}
-        <div class="archive__item-teaser">
-          <img src="{{ post.header.teaser | relative_url }}" alt="">
+        <div class="custom-list-teaser">
+          <img src="{{ post.header.teaser | relative_url }}" alt="{{ post.title }}">
+        </div>
+      {% else %}
+        <div class="custom-list-teaser">
+          <div style="width:100%; height:100%; background:#eee;"></div>
         </div>
       {% endif %}
-      <h3 style="font-weight: {{ page.post_title_weight | default: 300 }} !important;">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h3>
+
+      <div class="custom-list-content">
+        <h3 class="custom-list-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h3>
+        <div class="custom-list-excerpt">
+          {{ post.excerpt | strip_html | truncate: 200 }}
+        </div>
+      </div>
     </article>
   {% endfor %}
 </div>
