@@ -18,8 +18,9 @@ body {
   border-bottom: 1px solid #eeeeee !important;
   padding: 1rem 0 !important;
 
-  .inner {
-    max-width: 100% !important; /* 핵심: 폭 제한 해제 */
+  /* 핵심: 테마 내부에서 폭을 제한하는 모든 요소를 100%로 해제 */
+  .inner, .masthead__inner-wrap {
+    max-width: 100% !important; 
     padding-left: 5% !important;
     padding-right: 5% !important;
   }
@@ -30,6 +31,7 @@ body {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
+  max-width: 100% !important; /* 내부 네비게이션 폭 제한 해제 */
 }
 
 /* 3. 포스트 레이아웃: 그리드 → 리스트(가로 배치) 강제 전환 */
