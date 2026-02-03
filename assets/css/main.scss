@@ -12,31 +12,39 @@ body {
   background-color: #fff !important;
 }
 
-/* 2. 상단 메뉴 바: 전체 화면 확장 */
+/* 2. 상단 메뉴 바: 전체 화면 확장 (여백 0 버전) */
 .masthead {
   width: 100% !important;
   max-width: none !important;
   background: #fff !important;
   border-bottom: 1px solid #eeeeee !important;
-  padding: 0.7rem 0 !important;
+  padding: 0.7rem 0 !important; /* 위아래 여백만 유지 */
   margin: 0 !important;
 
   .inner, .masthead__inner-wrap {
     max-width: none !important;
     width: 100% !important;
+    padding: 0 !important; /* 내부 여백 완전 제거 */
+    margin: 0 !important;
   }
 }
 
 .masthead__inner-navigation {
   max-width: none !important;
+  width: 100% !important;
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  padding: 0 4% !important; /* 양옆 여백 살짝 부여 */
+  padding: 0 !important; /* 양옆 여백 0으로 수정 */
+}
+
+/* 로고와 메뉴 아이템이 너무 벽에 붙어 보인다면 각각 미세 조절 */
+.masthead__item--logo {
+  padding-left: 10px !important; /* 로고가 벽에 너무 붙으면 이 값만 조절하세요 */
 }
 
 .masthead__menu {
-  float: none !important;
+  padding-right: 10px !important; /* 메뉴가 벽에 너무 붙으면 이 값만 조절하세요 */
 }
 
 .masthead__menu-item {
@@ -49,33 +57,35 @@ body {
   color: #000 !important;
 }
 
-/* 3. 포스트 레이아웃: 데스크톱 매거진 리스트형 (이미지 왼쪽 / 텍스트 오른쪽) */
+/* 3. 포스트 레이아웃: 데스크톱 가로 리스트형 확실히 고정 */
 .archive, .entries-grid {
   display: block !important;
-  max-width: 1200px !important; /* 본문 영역은 가독성을 위해 적절히 제한 */
-  margin: 0 auto !important;
+  max-width: 1200px !important;
+  margin: 40px auto !important;
   padding: 0 20px !important;
 }
 
 .grid__item {
   width: 100% !important;
-  margin: 0 0 60px 0 !important; /* 게시글 간 간격 확대 */
-  float: none !important;
+  margin-bottom: 50px !important;
+  float: none !important; /* 기존 float 제거 */
 
   article.archive__item {
-    display: flex !important;
-    flex-direction: row !important; /* 가로 배치 강제 */
-    align-items: flex-start !important; /* 텍스트가 위쪽부터 시작되도록 */
-    gap: 3rem !important; /* 이미지와 텍스트 사이 넓은 공간 확보 */
+    display: flex !important;           /* 가로 정렬의 핵심 */
+    flex-direction: row !important;      /* 무조건 가로로 배치 */
+    align-items: flex-start !important;  /* 상단 기준 정렬 */
+    gap: 40px !important;                /* 이미지와 텍스트 사이 간격 */
+    width: 100% !important;
   }
 
-  /* 이미지 (좌측 배치) */
+  /* [좌측 이미지 고정] */
   .archive__item-teaser {
-    flex: 0 0 400px !important; /* 이미지 크기를 데스크톱에 맞춰 더 확대 */
+    order: 1 !important;                 /* 강제로 첫 번째 순서 배치 */
+    flex: 0 0 400px !important;          /* 데스크톱 이미지 너비 400px 고정 */
     height: 250px !important;
-    margin-bottom: 0 !important;
+    margin: 0 !important;
     overflow: hidden !important;
-    border-radius: 4px;
+    border-radius: 8px;
 
     img {
       width: 100% !important;
@@ -84,50 +94,54 @@ body {
     }
   }
 
-  /* 텍스트 영역 (우측 배치) */
-  .archive__item-body {
-    flex: 1 !important; /* 남은 공간을 텍스트가 모두 차지 */
+  /* [우측 텍스트 영역] - 제목과 요약본 포함 */
+  .archive__item-body, 
+  .archive__item-contents {              /* 테마에 따라 클래스명이 다를 수 있어 둘 다 지정 */
+    order: 2 !important;                 /* 이미지 다음 순서 배치 */
+    flex: 1 !important;                  /* 남은 가로 공간 모두 점유 */
+    display: flex !important;
+    flex-direction: column !important;   /* 제목 아래에 요약이 오도록 */
+    text-align: left !important;
   }
 
+  /* 제목 스타일 */
   .archive__item-title {
-    margin-top: 0 !important;
-    font-size: 1.7rem !important; /* 제목 크기 확대 */
+    margin: 0 0 15px 0 !important;
+    font-size: 1.6rem !important;
     font-weight: 800 !important;
-    margin-bottom: 1rem !important;
-    
+    line-height: 1.3 !important;
+
     a {
-      color: #000 !important;
+      color: #1a1a1a !important;
       text-decoration: none !important;
     }
   }
 
+  /* 요약 텍스트 (본문) */
   .archive__item-excerpt {
-    display: block !important;
-    font-size: 1.1rem !important;
-    line-height: 1.8 !important;
-    color: #333 !important;
-    /* 텍스트 양이 많아도 모니터에서 깔끔하도록 5줄 제한 */
-    display: -webkit-box;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+    color: #555 !important;
+    word-break: keep-all !important;
+    /* 5줄 이상일 경우 생략 처리 */
+    display: -webkit-box !important;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    overflow: hidden !important;
   }
 }
 
-/* 4. 메인 배너 키우기 전용 설정 */
-.page__hero--overlay {
-  padding: 18em 0 !important; /* 배너 높이를 기존보다 대폭 확장 */
-}
-
-/* 5. 모바일 대응: 768px 미만에서는 다시 세로형으로 변경 */
+/* 모바일 화면에서는 다시 사진이 위로 오도록 조절 */
 @media (max-width: 768px) {
   .grid__item article.archive__item {
-    flex-direction: column !important; /* 모바일은 다시 사진이 위로 */
-    gap: 1.5rem !important;
+    flex-direction: column !important;
+    gap: 20px !important;
   }
   .grid__item .archive__item-teaser {
     flex: 0 0 auto !important;
     width: 100% !important;
-    height: 200px !important;
+    height: 220px !important;
   }
 }
