@@ -1,6 +1,12 @@
 ---
 # 이 줄이 없으면 Jekyll이 Sass를 컴파일하지 않습니다.
 ---
+
+/* 테마 변수 덮어쓰기 (가장 깔끔한 방법) */
+$masthead-background-color: #ffffff; // 상단바 배경색 근본 해결
+$masthead-background-color-mobile: #ffffff; // 모바일도 흰색으로
+$border-color: #ffffff; // 테마 전체에 깔린 미세한 회색 선들을 흰색으로
+
 @import "minimal-mistakes/skins/air"; 
 @import "minimal-mistakes"; 
 
