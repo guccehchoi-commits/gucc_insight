@@ -7,7 +7,7 @@ tags:
   - quote
 date: 2026-02-03T14:47:00.000+09:00
 header:
-  teaser: assets/images/geim-aikon-eul-deulgo-jangnan-dayang-han-salamdeul-1-.jpg
+  teaser: assets/images/ben-neale-zpxkdh_xnsi-unsplash.jpg
 excerpt: |-
   게임을 오래 해서 문제가 되는 게 아니다.
   게임을 안 하고 있을 때도 계속 생각나면, 그때부터 점검이 필요하다.
